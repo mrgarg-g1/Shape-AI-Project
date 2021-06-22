@@ -62,6 +62,9 @@ if x["cod"] != "404":
     # to the "description" key at
     # the 0th index of z
     weather_description = z[0]["description"]
+    
+    #To Print date & Time
+    date_time = datetime.now().strftime("%d %b %y || %I:%M:%S %p")
  
     # print following values
     print(" Temperature (in kelvin unit) = " +
@@ -74,6 +77,14 @@ if x["cod"] != "404":
                     str(current_humidity) +
           "\n description = " +
                     str(weather_description))
- 
+    print("---------------------------------------------------------")
+    with open("Weather.txt","w") as f:
+      f.write(("Weather Info for " + city_name).upper() + " - ||" + date_time + "\n")
+      f.write("Temperature (in kelvin unit) : " + str(current_temperature) +"\n")
+      f.write("Temperature (in Celcius unit) : " + str(current_temperature2) + "\n")
+      f.write("Atomspheric Pressure is :" + str(current_pressure) + "\n")
+      f.write("Humidity :" + str(current_humidity)+ "\n")
+      f.write("Description :" + str(weather_description) )
+      print("-------------------------------------------------------")
 else:
     print(" City Not Found ")
